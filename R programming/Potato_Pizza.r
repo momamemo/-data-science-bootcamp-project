@@ -1,3 +1,4 @@
+## https://replit.com/@MayPimchanok/pizza#Potato_Pizza.r
 # Pizza Type
 TYPE <- c("Hawaiian", "Vegetarian", "Cheese", "Peporoni", "House Special")
 PRICE <- c(6.99, 5.99, 6.99, 6.99, 7.99)
