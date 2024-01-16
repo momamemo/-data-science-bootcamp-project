@@ -1,8 +1,9 @@
 ## https://replit.com/@MayPimchanok/pizza#Potato_Pizza.r
+##Input data
 # Pizza Type
-TYPE <- c("Hawaiian", "Vegetarian", "Cheese", "Peporoni", "House Special")
+TYPE <- c("Hawaiian", "Vegetarian", "Cheese", "Pepperoni", "House Special")
 PRICE <- c(6.99, 5.99, 6.99, 6.99, 7.99)
-pizza_type <- data.frame(ID = 1:5, TYPE, PRICE)
+pizza_type <- data.frame(ID = 1:5, TYPE, PRICE)   #column(1(id),2(type),3(price))
 
 # Pizza Size
 SIZE <- c("small", "medium", "large", "extra large", "jumbo")
@@ -11,15 +12,17 @@ CHARGE <- c(0, 2, 4, 6, 8)
 pizza_charge <- data.frame(ID = 1:5, SIZE, SLICE, CHARGE)
 
 # Pizza Topping
-TOPPING <- c("mushroom", "pineapple", "peporoni", "pizza sauce", "cheese", "bacon", "seafood", "no topping")
+TOPPING <- c("mushroom", "pineapple", "pepperoni", "pizza sauce", "cheese", "bacon", "seafood", "no topping")
 EXTRA <- c("1", "1", "1.5", "1.5", "2", "2", "3", "0")
 pizza_topping <- data.frame(ID = 1:8, TOPPING, EXTRA)
 
 
-count <- 0
-sum <- 0
+count <- 0    # set count = 0 for counting an order of pizza
+sum <- 0      # set sum = 0 for calculating a total price of each transaction
+
 
 pizza_chatbot <- function() {
+
 ## Process
 #Welcome
   cat("((_Welcome_)) > Type > Size > Topping > Extra Topping > Summarize\n")
@@ -33,16 +36,16 @@ pizza_chatbot <- function() {
 while (TRUE) { 
   cat("\nWelcome > ((_Type_)) > Size > Topping > Extra Topping > Summarize\n\n")
   print(pizza_type, row.names = F)
-    while (TRUE) {
+    while (TRUE) {              # use while to use this function{} again if error
       cat("\n\t\t\t\t\tChoose ID for select type of pizza :  ")
-      w <- readLines("stdin", n=1)
-        if (w %in% pizza_type$ID) {
-          a <- pizza_type[w, 2]
-          b <- pizza_type[w, 3]
-          break
-        } else {
+      w <- readLines("stdin", n=1)       # row selected = w
+        if (w %in% pizza_type$ID) {      # check input ID if it match with data?
+          a <- pizza_type[w, 2]          # w = id,type,price > column 2 > a
+          b <- pizza_type[w, 3]          # w = id,type,price > column 3 > b
+          break                # need to input correct ID number to be out of this loop
+        } else {                         # if ID is not on data
           print("Incorrect pizza id!!")
-        }
+        }                                # return to use while loop again
     } 
     cat("\t\t\t\t>>  You Choose: ", a, "//  $", b," <<")
     cat("\n----------------------------------------------------------------------\n\n")
@@ -138,3 +141,6 @@ while (TRUE) {
 }
 #call the function
 pizza_chatbot()
+
+  
+
